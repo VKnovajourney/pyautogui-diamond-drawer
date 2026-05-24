@@ -1,0 +1,25 @@
+import diamondfunctions as df
+
+# Prepare MS Paint
+df.wait_for_paint()
+df.select_pencil_tool()
+
+# User selects drawing point
+start_x, start_y = df.get_starting_position()
+
+# Initial shape size
+size = df.INITIAL_SIZE
+
+# Draw concentric diamonds
+for layer in range(df.TOTAL_LAYERS):
+
+    if size <= 0:
+        break
+
+    df.draw_diamond(start_x, start_y, size)
+
+    # Prepare next layer
+    start_y += df.VERTICAL_SHIFT
+    size -= df.SIZE_DECREASE
+
+print("Basic diamond drawing complete.")
